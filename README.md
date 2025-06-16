@@ -71,7 +71,7 @@ Absolutely! Here's a **short, clean, and well-explained** version of the **"Depl
 5. **Run the App**
 
    ```bash
-   python YTDbackend.py
+   python app.py
    ```
 
 6. Open your browser and go to 👉 `http://localhost:5000`
