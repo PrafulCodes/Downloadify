@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #0F172A;
+  color: white;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 3px;
+}
+/* Container */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+/* Header */
+header {
+  background-color: #1E293B;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: normal;
+}
+header .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+/* Hero Section */
+.hero {
+  background-color: #0F172A;
+  padding: 3rem 1rem;
+  border-bottom: 1px solid #333;
+}
+.hero h1 {
+  margin-bottom: 1rem;
+  font-size: 45px;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 3px;
+  font-weight: 100;
+  text-align: center;
+}
+.hero .subtext {
+  font-size: 1.1rem;
+  font-family: 'Anta', sans-serif;
+  margin-bottom: 2rem;
+  color: #929090;
+  text-align: center;
+}
+#downloadForm {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+#downloadForm input {
+  padding: 0.6rem;
+  width: 60%;
+  max-width: 400px;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid whitesmoke;
+  color: white;
+}
+#downloadForm button {
+  padding: 0.6rem 1.2rem;
+  background-color: #8B5CF6;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+/* Section Titles */
+section h2 {
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+/* How It Works */
+#how-it-works {
+  padding: 3rem 1rem;
+  background-color: #0F172A;
+  color: #bfbebe;
+}
+#how-it-works h2 {
+  color: white;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+.steps {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  color: #929090;
+}
+.step {
+  flex: 1;
+  min-width: 200px;
+  max-width: 280px;
+  text-align: center;
+  color: #929090;
+}
+.step img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 1px;
+  border:2px solid whitesmoke
+}
+/* Why Use Our Tool */
+#why-use {
+  padding: 3rem 1rem;
+  background-color: #0F172A;
+}
+#why-use h2 {
+  color: white;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+.reasons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+}
+.reason {
+  text-align: center;
+  max-width: 200px;
+}
+.circle {
+  width: 60px;
+  height: 60px;
+  background-color: #8B5CF6;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  margin: 0 auto 0.5rem;
+  font-family: 'Anta', sans-serif;
+}
+/* FAQ */
+#faq {
+  padding: 3rem 1rem;
+  background-color: #0F172A;
+}
+#faq h2 {
+  color: white;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+.faq-item {
+  margin: 1rem auto;
+  max-width: 700px;
+  border-bottom: 1px solid #444;
+}
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+.faq-answer {
+  display: none;
+  padding: 0 1rem 1rem;
+  color: #ccc;
+}
+.faq-question.active + .faq-answer {
+  display: block;
+}
+/* Footer */
+footer {
+  background-color: #1E293B;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #downloadForm {
+    flex-direction: column;
+  }
+
+  #downloadForm input,
+  #downloadForm button {
+    width: 100%;
+  }
+
+  .steps,
+  .reasons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero .subtext {
+    font-size: 0.95rem;
+  }
+
+  #downloadForm input,
+  #downloadForm button {
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  .faq-question {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  .faq-answer {
+    font-size: 0.9rem;
+  }
+}

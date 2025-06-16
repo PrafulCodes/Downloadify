@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Downloader</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Anta&family=Anton&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">Downloadify</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Download <span style="color:#8B5CF6;">YouTube Videos</span> in MP4 Instantly</h1>
+      <p class="subtext">No sign-up. No ads. Just paste the link and grab your video.</p>
+      <form id="downloadForm">
+        <input type="text" id="ytUrl" placeholder="Paste YouTube link here..." required />
+        <button type="submit">Download Video</button>
+      </form>
+      <div id="status"></div>
+      <div id="downloadLink" style="display:none;">
+        <a id="fileLink" href="#" download>Download is ready — Click here!</a>
+      </div>
+    </div>
+  </section>
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Step 1</h3>
+        <img src="static/HWU1.jpg" alt="Step 1">
+        <p>Paste your YouTube video URL in the textbox above.</p>
+      </div>
+      <div class="step">
+        <h3>Step 2</h3>
+        <img src="static/HWU2.jpg" alt="Step 2">
+        <p>Click the "Download Video" button to start processing.</p>
+      </div>
+      <div class="step">
+        <h3>Step 3</h3>
+        <img src="static/HWT3.jpg" alt="Step 3">
+        <p>Once ready, click the download link to save the video.</p>
+      </div>
+    </div>
+  </section>
+  <section id="why-use">
+    <h2>Why Use Our Tool</h2>
+    <div class="reasons">
+      <div class="reason"><div class="circle">1</div><p>Fast and easy download</p></div>
+      <div class="reason"><div class="circle">2</div><p>No registration required</p></div>
+      <div class="reason"><div class="circle">3</div><p>Free and unlimited</p></div>
+      <div class="reason"><div class="circle">4</div><p>Safe and secure</p></div>
+      <div class="reason"><div class="circle">5</div><p>Works on all devices</p></div>
+      <div class="reason"><div class="circle">6</div><p>High-quality downloads</p></div>
+    </div>
+  </section>
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-question">Is this tool free? <span>&#9660;</span></button>
+      <div class="faq-answer">Yes, our tool is completely free to use.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Do I need to sign up? <span>&#9660;</span></button>
+      <div class="faq-answer">No sign-up is required to use this tool.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What video formats are supported? <span>&#9660;</span></button>
+      <div class="faq-answer">We support MP4 format for now.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Can I download from mobile? <span>&#9660;</span></button>
+      <div class="faq-answer">Yes, it's mobile-friendly.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Is it legal to download videos? <span>&#9660;</span></button>
+      <div class="faq-answer">Please ensure you have permission to download any content.</div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 Downloadify. All rights reserved. Made with ❤ by Alison & Praful</p>
+  </footer>
+  <script>
+    const form = document.getElementById("downloadForm");
+    const status = document.getElementById("status");
+    const linkBox = document.getElementById("downloadLink");
+    const fileLink = document.getElementById("fileLink");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      status.textContent = "Processing...";
+      linkBox.style.display = "none";
+      const url = document.getElementById("ytUrl").value;
+
+      const response = await fetch("/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: url, type: "video" })
+      });
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        status.textContent = "✅ Video is ready!";
+        fileLink.href = data.download_url;
+        fileLink.download = data.filename;
+        linkBox.style.display = "block";
+      } else {
+        status.textContent = "❌ Error: " + data.message;
+      }
+    });
+
+    document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('active');
+    const answer = button.nextElementSibling;
+    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+  });
+});
+  </script>
+</body>
+</html>

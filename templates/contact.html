@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | ClipCatch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}" />
+</head>
+<body>
+  <header>
+    <div class="logo">Downloadify</div>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="/YTD/templates/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="contact-section">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <form class="contact-form" id="feedback-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" placeholder="Subject of your message" required>
+        </div>
+        <div class="form-group">
+          <label for="comments">Message</label>
+          <textarea id="comments" rows="5" placeholder="Type your message here..." required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 Downloadify. All rights reserved. Made with ❤ by Alison & Praful</p>
+  </footer>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init('WjynmsvFD7oNsG9aI'); 
+    })();
+  </script>
+  <script src="{{ url_for('static', filename='contact.js') }}"></script>
+</body>
+</html>
