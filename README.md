@@ -21,10 +21,6 @@ Just paste a YouTube link, and grab your video in MP4 format — fast and clean.
 
 ## 📸 Screenshots
 
-### Home Page
-
-![Home Page](https://downloadify-nwfm.onrender.com/static/assets/home.png)
-
 ![Screenshot 2025-06-17 002855](https://github.com/user-attachments/assets/895480cf-399f-4f3b-a658-399b13c9e721)
 
 ![Screenshot 2025-06-17 002908](https://github.com/user-attachments/assets/3116efac-e676-48bc-8c78-1941b5f077f4)
@@ -33,8 +29,51 @@ Just paste a YouTube link, and grab your video in MP4 format — fast and clean.
 
 ## 🚀 How to Run on Your Local Machine
 
-### 1️⃣ Clone the Repository
+Absolutely! Here's a **short, clean, and well-explained** version of the **"Deploy on your local machine"** section — just replace the old one in the README with this:
 
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+---
+
+## 🚀 Deploy on Your Local Machine
+
+1. **Clone the Repo**
+
+   ```bash
+   git clone https://github.com/your-username/your-repo-name.git
+   cd your-repo-name
+   ```
+
+2. **Create Virtual Environment**
+
+   ```bash
+   python -m venv venv
+   ```
+
+3. **Activate It**
+
+   * Windows:
+
+     ```bash
+     venv\Scripts\activate
+     ```
+
+   * macOS/Linux:
+
+     ```bash
+     source venv/bin/activate
+     ```
+
+4. **Install Dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Run the App**
+
+   ```bash
+   python YTDbackend.py
+   ```
+
+6. Open your browser and go to 👉 `http://localhost:5000`
+
+---
