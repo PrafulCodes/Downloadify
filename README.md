@@ -1,2 +1,40 @@
-# Downloadify
-A responsive landing page with a Python backend (Flask) that allows users to submit data through a form. Features include a modern hero section, working download form, FAQ section, and mobile-friendly design — fully deployed using Render.
+# 🎬 Downloadify — YouTube Video Downloader in MP4
+
+Downloadify is a simple, no-ads, and instant **YouTube Video Downloader** built using `Flask` and `yt-dlp`.  
+Just paste a YouTube link, and grab your video in MP4 format — fast and clean.  
+✅ No sign-up required.  
+🎯 Works for most public YouTube videos.
+
+👉 **Live Demo**: [https://downloadify-nwfm.onrender.com](https://downloadify-nwfm.onrender.com)
+
+---
+
+## 🛠 Tech Stack
+
+- 🐍 Python
+- 🔥 Flask (Backend)
+- 🎞 yt-dlp (Video downloading)
+- 🌐 HTML, CSS & JavaScript (Frontend)
+- 🚀 Render (for deployment)
+
+---
+
+## 📸 Screenshots
+
+### Home Page
+
+![Home Page](https://downloadify-nwfm.onrender.com/static/assets/home.png)
+
+![Screenshot 2025-06-17 002855](https://github.com/user-attachments/assets/895480cf-399f-4f3b-a658-399b13c9e721)
+
+![Screenshot 2025-06-17 002908](https://github.com/user-attachments/assets/3116efac-e676-48bc-8c78-1941b5f077f4)
+
+---
+
+## 🚀 How to Run on Your Local Machine
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
