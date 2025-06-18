@@ -5,7 +5,7 @@ import yt_dlp
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
-# Folder for downloaded videos
+
 DOWNLOAD_FOLDER = os.path.join(os.path.dirname(__file__), "downloads")
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
@@ -24,20 +24,19 @@ def download_video():
         url = data.get("url")
 
         if not url:
-            return jsonify({"status": "error", "message": "URL is missing"}), 400
+            return jsonify({"status": "error", "message": "⚠️ URL is missing."}), 400
 
         def progress_hook(d):
             if d['status'] == 'finished':
                 print("✅ Download complete")
 
         ydl_opts = {
-    'outtmpl': os.path.join(DOWNLOAD_FOLDER, '%(title)s.%(ext)s'),
-    'progress_hooks': [progress_hook],
-    'format': 'best',
-    'merge_output_format': 'mp4',
-    'cookiefile': os.path.join(os.path.dirname(__file__), 'cookies.txt')  # 👈 add this
-}
-
+            'outtmpl': os.path.join(DOWNLOAD_FOLDER, '%(title)s.%(ext)s'),
+            'progress_hooks': [progress_hook],
+            'format': 'best',
+            'merge_output_format': 'mp4',
+            
+        }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
@@ -51,7 +50,16 @@ def download_video():
         })
 
     except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+        error_message = str(e)
+
+        # 🔒 Handle YouTube login/captcha-related restrictions
+        if "Sign in to confirm" in error_message or "cookies" in error_message.lower():
+            return jsonify({
+                "status": "error",
+                "message": "❌ This video requires login (e.g. age-restricted or private). Only public YouTube videos are supported."
+            }), 403
+
+        return jsonify({"status": "error", "message": f"❌ {error_message}"}), 500
 
 @app.route("/downloads/<path:filename>")
 def serve_download(filename):
